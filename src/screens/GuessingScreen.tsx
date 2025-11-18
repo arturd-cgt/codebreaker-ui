@@ -14,12 +14,14 @@ interface GuessingScreenProps {
   guesses: Guess[];
   maxAttempts: number;
   onSubmitGuess: (guess: number[]) => void;
+  isLoading?: boolean;
 }
 
 const GuessingScreen: React.FC<GuessingScreenProps> = ({
   guesses,
   maxAttempts,
   onSubmitGuess,
+  isLoading = false,
 }) => {
   const [currentGuess, setCurrentGuess] = React.useState<(number | null)[]>([
     null,
@@ -30,9 +32,10 @@ const GuessingScreen: React.FC<GuessingScreenProps> = ({
 
   const attemptsLeft = maxAttempts - guesses.length;
   const isGuessComplete = currentGuess.every((digit) => digit !== null);
+  const isDisabled = !isGuessComplete || isLoading;
 
   const handleSubmit = () => {
-    if (isGuessComplete) {
+    if (isGuessComplete && !isLoading) {
       onSubmitGuess(currentGuess as number[]);
       setCurrentGuess([null, null, null, null]);
     }
@@ -49,14 +52,16 @@ const GuessingScreen: React.FC<GuessingScreenProps> = ({
           <Pressable
             style={({ pressed }) => [
               styles.submitButton,
-              !isGuessComplete && styles.disabledButton,
-              pressed && styles.pressedButton,
+              isDisabled && styles.disabledButton,
+              pressed && !isDisabled && styles.pressedButton,
             ]}
             onPress={handleSubmit}
-            disabled={!isGuessComplete}
+            disabled={isDisabled}
             role="button"
           >
-            <Text style={styles.buttonText}>Submit Guess</Text>
+            <Text style={styles.buttonText}>
+              {isLoading ? 'Submitting...' : 'Submit Guess'}
+            </Text>
           </Pressable>
         </View>
         <Text style={styles.attemptsText}>Attempts left: {attemptsLeft}</Text>
