@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import React from "react";
+import { View, Text, FlatList, StyleSheet } from "react-native";
 
 interface Guess {
   id: number;
@@ -27,7 +27,9 @@ const GuessHistory: React.FC<GuessHistoryProps> = ({ guesses }) => {
       keyExtractor={(item) => item.id.toString()}
       renderItem={({ item }) => (
         <View style={styles.guessItem}>
-          <Text style={styles.guessText}>Guess #{item.id}: {item.guess.join(' ')}</Text>
+          <Text style={styles.guessText}>
+            Guess #{item.id}: {item.guess.join(" ")}
+          </Text>
           <Text style={styles.resultText}>
             Well Placed: {item.wellPlaced}, Misplaced: {item.misplaced}
           </Text>
@@ -40,26 +42,26 @@ const GuessHistory: React.FC<GuessHistoryProps> = ({ guesses }) => {
 const styles = StyleSheet.create({
   emptyContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   emptyText: {
     fontSize: 18,
-    color: '#999',
+    color: "#999",
   },
   list: {
-    width: '100%',
+    width: "100%",
   },
   guessItem: {
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     borderRadius: 8,
     padding: 15,
     marginVertical: 5,
     marginHorizontal: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    shadowColor: '#000',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
     shadowRadius: 1,
@@ -67,11 +69,11 @@ const styles = StyleSheet.create({
   },
   guessText: {
     fontSize: 16,
-    color: '#333',
+    color: "#333",
   },
   resultText: {
     fontSize: 14,
-    color: '#666',
+    color: "#666",
   },
 });
 
