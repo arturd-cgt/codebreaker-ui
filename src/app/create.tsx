@@ -3,7 +3,6 @@ import { useRouter } from 'expo-router';
 import SetupScreen from '@/screens/SetupScreen';
 import { useCreateGame } from '@/hooks/mutations/useGameMutations';
 import { useGameContext } from '@/contexts/GameContext';
-import { Alert } from 'react-native';
 
 export default function CreateScreen() {
   const router = useRouter();
@@ -23,8 +22,8 @@ export default function CreateScreen() {
       // Navigate to game created screen without secret code in URL
       router.push(`/games/${response.gameId}/created`);
     } catch (error) {
+      // Error is handled globally by React Query
       console.error('Failed to create game:', error);
-      Alert.alert('Error', 'Failed to create game. Please try again.');
     }
   };
 

@@ -1,6 +1,13 @@
-import React, { useState } from 'react';
-import { View, Text, Pressable, StyleSheet, Alert, Platform } from 'react-native';
-import * as Clipboard from 'expo-clipboard';
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  Pressable,
+  StyleSheet,
+  Alert,
+  Platform,
+} from "react-native";
+import * as Clipboard from "expo-clipboard";
 
 interface GameCreatedScreenProps {
   gameId: string;
@@ -14,7 +21,7 @@ const GameCreatedScreen: React.FC<GameCreatedScreenProps> = ({
   const [copied, setCopied] = useState(false);
 
   const getShareUrl = () => {
-    if (Platform.OS === 'web' && typeof window !== 'undefined') {
+    if (Platform.OS === "web" && typeof window !== "undefined") {
       // For web, use the current origin
       return `${window.location.origin}/games/${gameId}`;
     }
@@ -25,19 +32,18 @@ const GameCreatedScreen: React.FC<GameCreatedScreenProps> = ({
   const handleCopyGameId = async () => {
     try {
       const shareUrl = getShareUrl();
-      const textToCopy = `Game ID: ${gameId}\nJoin Link: ${shareUrl}`;
-      
-      await Clipboard.setStringAsync(textToCopy);
+
+      await Clipboard.setStringAsync(shareUrl);
       setCopied(true);
-      Alert.alert('Success', 'Game ID and link copied to clipboard!');
-      
+      Alert.alert("Success", "Game ID and link copied to clipboard!");
+
       // Reset copied state after 2 seconds
       setTimeout(() => {
         setCopied(false);
       }, 2000);
     } catch (error) {
-      Alert.alert('Error', 'Failed to copy game ID');
-      console.error('Failed to copy to clipboard:', error);
+      Alert.alert("Error", "Failed to copy game ID");
+      console.error("Failed to copy to clipboard:", error);
     }
   };
 
@@ -46,7 +52,7 @@ const GameCreatedScreen: React.FC<GameCreatedScreenProps> = ({
       <View style={styles.content}>
         <Text style={styles.title}>Game Created!</Text>
         <Text style={styles.subtitle}>Share this Game ID with your friend</Text>
-        
+
         <View style={styles.gameIdContainer}>
           <Text style={styles.gameIdLabel}>Game ID</Text>
           <View style={styles.gameIdBox}>
@@ -65,7 +71,7 @@ const GameCreatedScreen: React.FC<GameCreatedScreenProps> = ({
             onPress={handleCopyGameId}
           >
             <Text style={styles.buttonText}>
-              {copied ? '✓ Copied!' : 'Copy Game ID'}
+              {copied ? "✓ Copied!" : "Copy Game ID"}
             </Text>
           </Pressable>
 
@@ -88,50 +94,50 @@ const GameCreatedScreen: React.FC<GameCreatedScreenProps> = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#f7f9fc',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#f7f9fc",
     padding: 20,
   },
   content: {
-    width: '100%',
+    width: "100%",
     maxWidth: 400,
-    alignItems: 'center',
+    alignItems: "center",
   },
   title: {
     fontSize: 36,
-    fontWeight: 'bold',
-    color: '#333',
+    fontWeight: "bold",
+    color: "#333",
     marginBottom: 10,
-    textAlign: 'center',
+    textAlign: "center",
   },
   subtitle: {
     fontSize: 18,
-    color: '#666',
+    color: "#666",
     marginBottom: 40,
-    textAlign: 'center',
+    textAlign: "center",
   },
   gameIdContainer: {
-    width: '100%',
+    width: "100%",
     marginBottom: 40,
-    alignItems: 'center',
+    alignItems: "center",
   },
   gameIdLabel: {
     fontSize: 16,
-    color: '#666',
+    color: "#666",
     marginBottom: 12,
-    fontWeight: '600',
+    fontWeight: "600",
   },
   gameIdBox: {
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     borderWidth: 2,
-    borderColor: '#3498db',
+    borderColor: "#3498db",
     borderRadius: 12,
     paddingVertical: 16,
     paddingHorizontal: 24,
-    width: '100%',
-    alignItems: 'center',
-    shadowColor: '#000',
+    width: "100%",
+    alignItems: "center",
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 2,
@@ -142,20 +148,20 @@ const styles = StyleSheet.create({
   },
   gameIdText: {
     fontSize: 24,
-    fontWeight: 'bold',
-    color: '#3498db',
+    fontWeight: "bold",
+    color: "#3498db",
     letterSpacing: 2,
   },
   buttonContainer: {
-    width: '100%',
+    width: "100%",
     gap: 16,
   },
   button: {
     paddingVertical: 16,
     paddingHorizontal: 32,
     borderRadius: 12,
-    alignItems: 'center',
-    shadowColor: '#000',
+    alignItems: "center",
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 2,
@@ -165,24 +171,23 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   copyButton: {
-    backgroundColor: '#95a5a6',
+    backgroundColor: "#95a5a6",
   },
   copiedButton: {
-    backgroundColor: '#2ecc71',
+    backgroundColor: "#2ecc71",
   },
   startButton: {
-    backgroundColor: '#3498db',
+    backgroundColor: "#3498db",
   },
   pressedButton: {
     opacity: 0.8,
     transform: [{ scale: 0.98 }],
   },
   buttonText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
 });
 
 export default GameCreatedScreen;
-

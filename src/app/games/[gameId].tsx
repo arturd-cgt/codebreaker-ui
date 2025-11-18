@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { Alert } from 'react-native';
 import GuessingScreen from '@/screens/GuessingScreen';
 import { useSubmitGuess, useJoinGame } from '@/hooks/mutations/useGameMutations';
 import { useGameState as useGameStateQuery } from '@/hooks/queries/useGameQueries';
@@ -73,8 +72,8 @@ export default function GameScreen() {
         router.replace(`/games/${gameId}/over`);
       }
     } catch (error) {
+      // Error is handled globally by React Query
       console.error('Failed to submit guess:', error);
-      Alert.alert('Error', 'Failed to submit guess. Please try again.');
     }
   };
 

@@ -2,7 +2,6 @@ import React from 'react';
 import { useRouter } from 'expo-router';
 import JoinGameScreen from '@/screens/JoinGameScreen';
 import { useJoinGame } from '@/hooks/mutations/useGameMutations';
-import { Alert } from 'react-native';
 
 export default function JoinScreen() {
   const router = useRouter();
@@ -18,8 +17,8 @@ export default function JoinScreen() {
         router.push(`/games/${response.gameId}`);
       }
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Failed to join game';
-      Alert.alert('Error', errorMessage);
+      // Error is handled globally by React Query
+      console.error('Failed to join game:', error);
     }
   };
 
