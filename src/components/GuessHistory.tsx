@@ -25,6 +25,8 @@ const GuessHistory: React.FC<GuessHistoryProps> = ({ guesses }) => {
     <FlatList
       data={guesses}
       keyExtractor={(item) => item.id.toString()}
+      contentContainerStyle={styles.listContent}
+      style={styles.list}
       renderItem={({ item }) => (
         <View style={styles.guessItem}>
           <Text style={styles.guessText}>
@@ -50,7 +52,10 @@ const styles = StyleSheet.create({
     color: "#999",
   },
   list: {
-    width: "100%",
+    flex: 1,
+  },
+  listContent: {
+    paddingVertical: 10,
   },
   guessItem: {
     backgroundColor: "#fff",
