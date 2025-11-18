@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, SafeAreaView } from 'react-native';
-import SetupScreen from './screens/SetupScreen';
-import TransitionScreen from './screens/TransitionScreen';
-import GuessingScreen from './screens/GuessingScreen';
-import GameOverScreen from './screens/GameOverScreen';
-import { checkGuess } from './utils/gameLogic';
+import SetupScreen from '@/screens/SetupScreen';
+import TransitionScreen from '@/screens/TransitionScreen';
+import GuessingScreen from '@/screens/GuessingScreen';
+import GameOverScreen from '@/screens/GameOverScreen';
+import { checkGuess } from '@/utils/gameLogic';
 
 type GamePhase = 'SETUP' | 'TRANSITION' | 'GUESSING' | 'GAME_OVER';
 

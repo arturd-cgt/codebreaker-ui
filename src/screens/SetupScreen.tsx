@@ -1,13 +1,18 @@
-import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
-import GuessInput from '../components/GuessInput';
+import React from "react";
+import { View, Text, Button, StyleSheet } from "react-native";
+import GuessInput from "@/components/GuessInput";
 
 interface SetupScreenProps {
   onCodeSet: (code: number[]) => void;
 }
 
 const SetupScreen: React.FC<SetupScreenProps> = ({ onCodeSet }) => {
-  const [code, setCode] = React.useState<(number | null)[]>([null, null, null, null]);
+  const [code, setCode] = React.useState<(number | null)[]>([
+    null,
+    null,
+    null,
+    null,
+  ]);
 
   const isCodeComplete = code.every((digit) => digit !== null);
 
@@ -36,22 +41,22 @@ const SetupScreen: React.FC<SetupScreenProps> = ({ onCodeSet }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#f7f9fc',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#f7f9fc",
     padding: 20,
   },
   title: {
     fontSize: 28,
-    fontWeight: 'bold',
-    color: '#333',
+    fontWeight: "bold",
+    color: "#333",
     marginBottom: 15,
-    textAlign: 'center',
+    textAlign: "center",
   },
   instructions: {
     fontSize: 18,
-    color: '#666',
-    textAlign: 'center',
+    color: "#666",
+    textAlign: "center",
     marginBottom: 30,
     paddingHorizontal: 20,
   },
