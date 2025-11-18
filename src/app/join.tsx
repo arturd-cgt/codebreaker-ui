@@ -1,7 +1,7 @@
-import React from 'react';
-import { useRouter } from 'expo-router';
-import JoinGameScreen from '@/screens/JoinGameScreen';
-import { useJoinGame } from '@/hooks/mutations/useGameMutations';
+import React from "react";
+import { useRouter } from "expo-router";
+import JoinGameScreen from "@/screens/JoinGameScreen";
+import { useJoinGame } from "@/hooks/mutations/useGameMutations";
 
 export default function JoinScreen() {
   const router = useRouter();
@@ -18,7 +18,7 @@ export default function JoinScreen() {
       }
     } catch (error) {
       // Error is handled globally by React Query
-      console.error('Failed to join game:', error);
+      console.error("Failed to join game:", error);
     }
   };
 
@@ -34,4 +34,3 @@ export default function JoinScreen() {
     />
   );
 }
-

@@ -1,6 +1,6 @@
-import React from 'react';
-import { useLocalSearchParams, useRouter } from 'expo-router';
-import GameCreatedScreen from '@/screens/GameCreatedScreen';
+import React from "react";
+import { useLocalSearchParams, useRouter } from "expo-router";
+import GameCreatedScreen from "@/screens/GameCreatedScreen";
 
 export default function GameCreatedRoute() {
   const { gameId } = useLocalSearchParams<{ gameId: string }>();
@@ -18,10 +18,6 @@ export default function GameCreatedRoute() {
   }
 
   return (
-    <GameCreatedScreen
-      gameId={gameId}
-      onStartGuessing={handleStartGuessing}
-    />
+    <GameCreatedScreen gameId={gameId} onStartGuessing={handleStartGuessing} />
   );
 }
-

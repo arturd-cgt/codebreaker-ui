@@ -1,17 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { useLocalSearchParams, useRouter } from 'expo-router';
-import GuessingScreen from '@/screens/GuessingScreen';
-import { useSubmitGuess, useJoinGame } from '@/hooks/mutations/useGameMutations';
-import { useGameState as useGameStateQuery } from '@/hooks/queries/useGameQueries';
-import { Guess } from '@/types/game';
-import { MAX_ATTEMPTS } from '@/constants/game';
+import React, { useEffect, useState } from "react";
+import { useLocalSearchParams, useRouter } from "expo-router";
+import GuessingScreen from "@/screens/GuessingScreen";
+import {
+  useSubmitGuess,
+  useJoinGame
+} from "@/hooks/mutations/useGameMutations";
+import { useGameState as useGameStateQuery } from "@/hooks/queries/useGameQueries";
+import { Guess } from "@/types/game";
+import { MAX_ATTEMPTS } from "@/constants/game";
 
 export default function GameScreen() {
   const { gameId } = useLocalSearchParams<{ gameId: string }>();
   const router = useRouter();
   const [guesses, setGuesses] = useState<Guess[]>([]);
   const [hasJoined, setHasJoined] = useState(false);
-  
+
   const submitGuessMutation = useSubmitGuess();
   const joinGameMutation = useJoinGame();
   const { data: gameState, isLoading: isLoadingGameState } = useGameStateQuery(
@@ -23,13 +26,13 @@ export default function GameScreen() {
   useEffect(() => {
     const joinGameIfNeeded = async () => {
       if (!gameId || hasJoined) return;
-      
+
       try {
         // Join the game (no storage check needed)
         await joinGameMutation.mutateAsync(gameId);
         setHasJoined(true);
       } catch (error) {
-        console.error('Failed to join game:', error);
+        console.error("Failed to join game:", error);
         // If join fails, still try to proceed (maybe already joined or game doesn't exist)
         setHasJoined(true);
       }
@@ -53,7 +56,7 @@ export default function GameScreen() {
     try {
       const response = await submitGuessMutation.mutateAsync({
         gameId,
-        guess,
+        guess
       });
 
       // Convert API response to local Guess type
@@ -61,7 +64,7 @@ export default function GameScreen() {
         id: response.guessId,
         guess: response.guess,
         wellPlaced: response.wellPlaced,
-        misplaced: response.misplaced,
+        misplaced: response.misplaced
       };
 
       setGuesses((prev) => [...prev, newGuess]);
@@ -73,7 +76,7 @@ export default function GameScreen() {
       }
     } catch (error) {
       // Error is handled globally by React Query
-      console.error('Failed to submit guess:', error);
+      console.error("Failed to submit guess:", error);
     }
   };
 
@@ -93,4 +96,3 @@ export default function GameScreen() {
     />
   );
 }
-

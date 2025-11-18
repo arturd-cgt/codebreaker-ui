@@ -1,2 +1,1 @@
-export * from './useGameQueries';
-
+export * from "./useGameQueries";

@@ -6,7 +6,7 @@ interface TransitionScreenProps {
 }
 
 const TransitionScreen: React.FC<TransitionScreenProps> = ({
-  onStartGuessing,
+  onStartGuessing
 }) => {
   return (
     <View style={styles.container}>
@@ -24,15 +24,15 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#eefcff",
-    padding: 20,
+    padding: 20
   },
   message: {
     fontSize: 22,
     color: "#333",
     textAlign: "center",
     marginBottom: 30,
-    lineHeight: 30,
-  },
+    lineHeight: 30
+  }
 });
 
 export default TransitionScreen;

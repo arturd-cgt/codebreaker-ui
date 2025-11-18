@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import React from "react";
+import { View, Text, Pressable, StyleSheet } from "react-native";
 
 interface GuessInputProps {
   code: (number | null)[];
@@ -72,59 +72,59 @@ const GuessInput: React.FC<GuessInputProps> = ({ code, onCodeChange }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    alignItems: 'center',
+    width: "100%",
+    alignItems: "center"
   },
   codeContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginBottom: 30,
+    flexDirection: "row",
+    justifyContent: "center",
+    marginBottom: 30
   },
   slot: {
     width: 60,
     height: 60,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#fff",
     borderWidth: 2,
-    borderColor: '#ddd',
+    borderColor: "#ddd",
     borderRadius: 8,
     marginHorizontal: 5,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.2,
     shadowRadius: 1.41,
-    elevation: 2,
+    elevation: 2
   },
   digit: {
     fontSize: 28,
-    fontWeight: 'bold',
-    color: '#333',
+    fontWeight: "bold",
+    color: "#333"
   },
   keypad: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    maxWidth: 300,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    maxWidth: 300
   },
   key: {
     width: 75,
     height: 75,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#fff",
     borderWidth: 1,
-    borderColor: '#eee',
+    borderColor: "#eee",
     borderRadius: 37.5,
-    margin: 8,
+    margin: 8
   },
   keyText: {
     fontSize: 24,
-    color: '#555',
+    color: "#555"
   },
   pressed: {
-    backgroundColor: '#ddd',
-  },
+    backgroundColor: "#ddd"
+  }
 });
 
 export default GuessInput;

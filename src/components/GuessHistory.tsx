@@ -45,17 +45,17 @@ const styles = StyleSheet.create({
   emptyContainer: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "center"
   },
   emptyText: {
     fontSize: 18,
-    color: "#999",
+    color: "#999"
   },
   list: {
-    flex: 1,
+    flex: 1
   },
   listContent: {
-    paddingVertical: 10,
+    paddingVertical: 10
   },
   guessItem: {
     backgroundColor: "#fff",
@@ -70,16 +70,16 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
     shadowRadius: 1,
-    elevation: 2,
+    elevation: 2
   },
   guessText: {
     fontSize: 16,
-    color: "#333",
+    color: "#333"
   },
   resultText: {
     fontSize: 14,
-    color: "#666",
-  },
+    color: "#666"
+  }
 });
 
 export default GuessHistory;

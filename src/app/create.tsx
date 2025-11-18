@@ -1,8 +1,8 @@
-import React from 'react';
-import { useRouter } from 'expo-router';
-import SetupScreen from '@/screens/SetupScreen';
-import { useCreateGame } from '@/hooks/mutations/useGameMutations';
-import { useGameContext } from '@/contexts/GameContext';
+import React from "react";
+import { useRouter } from "expo-router";
+import SetupScreen from "@/screens/SetupScreen";
+import { useCreateGame } from "@/hooks/mutations/useGameMutations";
+import { useGameContext } from "@/contexts/GameContext";
 
 export default function CreateScreen() {
   const router = useRouter();
@@ -13,17 +13,17 @@ export default function CreateScreen() {
     try {
       const response = await createGameMutation.mutateAsync({
         secretCode: code,
-        maxAttempts: 10,
+        maxAttempts: 10
       });
-      
+
       // Store secret code in context (not in URL)
       setSecretCode(response.gameId, code);
-      
+
       // Navigate to game created screen without secret code in URL
       router.push(`/games/${response.gameId}/created`);
     } catch (error) {
       // Error is handled globally by React Query
-      console.error('Failed to create game:', error);
+      console.error("Failed to create game:", error);
     }
   };
 
@@ -39,4 +39,3 @@ export default function CreateScreen() {
     />
   );
 }
-

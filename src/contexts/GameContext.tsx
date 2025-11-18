@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode } from "react";
 
 interface GameContextType {
   secretCodes: Record<string, number[]>;
@@ -8,13 +8,15 @@ interface GameContextType {
 
 const GameContext = createContext<GameContextType | undefined>(undefined);
 
-export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const GameProvider: React.FC<{ children: ReactNode }> = ({
+  children
+}) => {
   const [secretCodes, setSecretCodes] = useState<Record<string, number[]>>({});
 
   const setSecretCode = (gameId: string, code: number[]) => {
     setSecretCodes((prev) => ({
       ...prev,
-      [gameId]: code,
+      [gameId]: code
     }));
   };
 
@@ -32,8 +34,7 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 export const useGameContext = () => {
   const context = useContext(GameContext);
   if (!context) {
-    throw new Error('useGameContext must be used within GameProvider');
+    throw new Error("useGameContext must be used within GameProvider");
   }
   return context;
 };
-

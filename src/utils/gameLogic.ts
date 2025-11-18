@@ -1,4 +1,7 @@
-export const checkGuess = (guess: number[], secretCode: number[]): { wellPlaced: number; misplaced: number } => {
+export const checkGuess = (
+  guess: number[],
+  secretCode: number[]
+): { wellPlaced: number; misplaced: number } => {
   const guessCopy = [...guess];
   const secretCodeCopy = [...secretCode];
   let wellPlaced = 0;

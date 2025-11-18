@@ -1,2 +1,1 @@
-export * from './useGameMutations';
-
+export * from "./useGameMutations";

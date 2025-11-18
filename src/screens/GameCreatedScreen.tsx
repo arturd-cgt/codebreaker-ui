@@ -5,7 +5,7 @@ import {
   Pressable,
   StyleSheet,
   Alert,
-  Platform,
+  Platform
 } from "react-native";
 import * as Clipboard from "expo-clipboard";
 
@@ -16,7 +16,7 @@ interface GameCreatedScreenProps {
 
 const GameCreatedScreen: React.FC<GameCreatedScreenProps> = ({
   gameId,
-  onStartGuessing,
+  onStartGuessing
 }) => {
   const [copied, setCopied] = useState(false);
 
@@ -66,7 +66,7 @@ const GameCreatedScreen: React.FC<GameCreatedScreenProps> = ({
               styles.button,
               styles.copyButton,
               copied && styles.copiedButton,
-              pressed && styles.pressedButton,
+              pressed && styles.pressedButton
             ]}
             onPress={handleCopyGameId}
           >
@@ -79,7 +79,7 @@ const GameCreatedScreen: React.FC<GameCreatedScreenProps> = ({
             style={({ pressed }) => [
               styles.button,
               styles.startButton,
-              pressed && styles.pressedButton,
+              pressed && styles.pressedButton
             ]}
             onPress={onStartGuessing}
           >
@@ -97,36 +97,36 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#f7f9fc",
-    padding: 20,
+    padding: 20
   },
   content: {
     width: "100%",
     maxWidth: 400,
-    alignItems: "center",
+    alignItems: "center"
   },
   title: {
     fontSize: 36,
     fontWeight: "bold",
     color: "#333",
     marginBottom: 10,
-    textAlign: "center",
+    textAlign: "center"
   },
   subtitle: {
     fontSize: 18,
     color: "#666",
     marginBottom: 40,
-    textAlign: "center",
+    textAlign: "center"
   },
   gameIdContainer: {
     width: "100%",
     marginBottom: 40,
-    alignItems: "center",
+    alignItems: "center"
   },
   gameIdLabel: {
     fontSize: 16,
     color: "#666",
     marginBottom: 12,
-    fontWeight: "600",
+    fontWeight: "600"
   },
   gameIdBox: {
     backgroundColor: "#fff",
@@ -140,21 +140,21 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 2
     },
     shadowOpacity: 0.1,
     shadowRadius: 4,
-    elevation: 3,
+    elevation: 3
   },
   gameIdText: {
     fontSize: 24,
     fontWeight: "bold",
     color: "#3498db",
-    letterSpacing: 2,
+    letterSpacing: 2
   },
   buttonContainer: {
     width: "100%",
-    gap: 16,
+    gap: 16
   },
   button: {
     paddingVertical: 16,
@@ -164,30 +164,30 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 2
     },
     shadowOpacity: 0.1,
     shadowRadius: 4,
-    elevation: 3,
+    elevation: 3
   },
   copyButton: {
-    backgroundColor: "#95a5a6",
+    backgroundColor: "#95a5a6"
   },
   copiedButton: {
-    backgroundColor: "#2ecc71",
+    backgroundColor: "#2ecc71"
   },
   startButton: {
-    backgroundColor: "#3498db",
+    backgroundColor: "#3498db"
   },
   pressedButton: {
     opacity: 0.8,
-    transform: [{ scale: 0.98 }],
+    transform: [{ scale: 0.98 }]
   },
   buttonText: {
     color: "#fff",
     fontSize: 18,
-    fontWeight: "bold",
-  },
+    fontWeight: "bold"
+  }
 });
 
 export default GameCreatedScreen;

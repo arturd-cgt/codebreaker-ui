@@ -1,5 +1,12 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, Pressable, StyleSheet, Alert } from 'react-native';
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  Pressable,
+  StyleSheet,
+  Alert
+} from "react-native";
 
 interface JoinGameScreenProps {
   onJoinGame: (gameId: string) => void;
@@ -10,14 +17,14 @@ interface JoinGameScreenProps {
 const JoinGameScreen: React.FC<JoinGameScreenProps> = ({
   onJoinGame,
   isLoading = false,
-  onBack,
+  onBack
 }) => {
-  const [gameId, setGameId] = useState('');
+  const [gameId, setGameId] = useState("");
 
   const handleJoin = () => {
     const trimmedGameId = gameId.trim();
     if (!trimmedGameId) {
-      Alert.alert('Error', 'Please enter a game ID');
+      Alert.alert("Error", "Please enter a game ID");
       return;
     }
     onJoinGame(trimmedGameId);
@@ -47,7 +54,7 @@ const JoinGameScreen: React.FC<JoinGameScreenProps> = ({
         <Pressable
           style={({ pressed }) => [
             styles.backButton,
-            pressed && styles.pressedButton,
+            pressed && styles.pressedButton
           ]}
           onPress={onBack}
           disabled={isLoading}
@@ -59,13 +66,13 @@ const JoinGameScreen: React.FC<JoinGameScreenProps> = ({
           style={({ pressed }) => [
             styles.joinButton,
             (!gameId.trim() || isLoading) && styles.disabledButton,
-            pressed && !isLoading && gameId.trim() && styles.pressedButton,
+            pressed && !isLoading && gameId.trim() && styles.pressedButton
           ]}
           onPress={handleJoin}
           disabled={!gameId.trim() || isLoading}
         >
           <Text style={styles.joinButtonText}>
-            {isLoading ? 'Joining...' : 'Join Game'}
+            {isLoading ? "Joining..." : "Join Game"}
           </Text>
         </Pressable>
       </View>
@@ -76,81 +83,80 @@ const JoinGameScreen: React.FC<JoinGameScreenProps> = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#f7f9fc',
-    padding: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#f7f9fc",
+    padding: 20
   },
   title: {
     fontSize: 32,
-    fontWeight: 'bold',
-    color: '#333',
+    fontWeight: "bold",
+    color: "#333",
     marginBottom: 10,
-    textAlign: 'center',
+    textAlign: "center"
   },
   instructions: {
     fontSize: 16,
-    color: '#666',
-    textAlign: 'center',
+    color: "#666",
+    textAlign: "center",
     marginBottom: 40,
-    paddingHorizontal: 20,
+    paddingHorizontal: 20
   },
   inputContainer: {
-    width: '100%',
+    width: "100%",
     maxWidth: 400,
-    marginBottom: 30,
+    marginBottom: 30
   },
   input: {
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     borderWidth: 2,
-    borderColor: '#ddd',
+    borderColor: "#ddd",
     borderRadius: 12,
     padding: 16,
     fontSize: 18,
-    textAlign: 'center',
-    color: '#333',
+    textAlign: "center",
+    color: "#333"
   },
   buttonContainer: {
-    width: '100%',
+    width: "100%",
     maxWidth: 400,
-    flexDirection: 'row',
-    gap: 12,
+    flexDirection: "row",
+    gap: 12
   },
   backButton: {
     flex: 1,
     paddingVertical: 14,
     paddingHorizontal: 24,
     borderRadius: 12,
-    backgroundColor: '#95a5a6',
-    alignItems: 'center',
+    backgroundColor: "#95a5a6",
+    alignItems: "center"
   },
   joinButton: {
     flex: 2,
     paddingVertical: 14,
     paddingHorizontal: 24,
     borderRadius: 12,
-    backgroundColor: '#2ecc71',
-    alignItems: 'center',
+    backgroundColor: "#2ecc71",
+    alignItems: "center"
   },
   disabledButton: {
-    backgroundColor: '#bdc3c7',
-    opacity: 0.6,
+    backgroundColor: "#bdc3c7",
+    opacity: 0.6
   },
   pressedButton: {
     opacity: 0.8,
-    transform: [{ scale: 0.98 }],
+    transform: [{ scale: 0.98 }]
   },
   backButtonText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: "600"
   },
   joinButtonText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 16,
-    fontWeight: 'bold',
-  },
+    fontWeight: "bold"
+  }
 });
 
 export default JoinGameScreen;
-

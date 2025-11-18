@@ -8,16 +8,16 @@ interface SetupScreenProps {
   isLoading?: boolean;
 }
 
-const SetupScreen: React.FC<SetupScreenProps> = ({ 
-  onCodeSet, 
+const SetupScreen: React.FC<SetupScreenProps> = ({
+  onCodeSet,
   onBack,
-  isLoading = false,
+  isLoading = false
 }) => {
   const [code, setCode] = React.useState<(number | null)[]>([
     null,
     null,
     null,
-    null,
+    null
   ]);
 
   const isCodeComplete = code.every((digit) => digit !== null);
@@ -36,12 +36,12 @@ const SetupScreen: React.FC<SetupScreenProps> = ({
         Player 2, look away! Enter a 4-digit code using numbers 1-9.
       </Text>
       <GuessInput code={code} onCodeChange={setCode} />
-      
+
       <View style={styles.buttonContainer}>
         <Pressable
           style={({ pressed }) => [
             styles.backButton,
-            pressed && styles.pressedButton,
+            pressed && styles.pressedButton
           ]}
           onPress={onBack}
           disabled={isLoading}
@@ -53,13 +53,13 @@ const SetupScreen: React.FC<SetupScreenProps> = ({
           style={({ pressed }) => [
             styles.submitButton,
             isDisabled && styles.disabledButton,
-            pressed && !isDisabled && styles.pressedButton,
+            pressed && !isDisabled && styles.pressedButton
           ]}
           onPress={handleSetCode}
           disabled={isDisabled}
         >
           <Text style={styles.submitButtonText}>
-            {isLoading ? 'Creating...' : 'Set Secret Code'}
+            {isLoading ? "Creating..." : "Set Secret Code"}
           </Text>
         </Pressable>
       </View>
@@ -73,63 +73,63 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#f7f9fc",
-    padding: 20,
+    padding: 20
   },
   title: {
     fontSize: 28,
     fontWeight: "bold",
     color: "#333",
     marginBottom: 15,
-    textAlign: "center",
+    textAlign: "center"
   },
   instructions: {
     fontSize: 18,
     color: "#666",
     textAlign: "center",
     marginBottom: 30,
-    paddingHorizontal: 20,
+    paddingHorizontal: 20
   },
   buttonContainer: {
-    width: '100%',
+    width: "100%",
     maxWidth: 400,
-    flexDirection: 'row',
+    flexDirection: "row",
     gap: 12,
-    marginTop: 20,
+    marginTop: 20
   },
   backButton: {
     flex: 1,
     paddingVertical: 14,
     paddingHorizontal: 24,
     borderRadius: 12,
-    backgroundColor: '#95a5a6',
-    alignItems: 'center',
+    backgroundColor: "#95a5a6",
+    alignItems: "center"
   },
   submitButton: {
     flex: 2,
     paddingVertical: 14,
     paddingHorizontal: 24,
     borderRadius: 12,
-    backgroundColor: '#3498db',
-    alignItems: 'center',
+    backgroundColor: "#3498db",
+    alignItems: "center"
   },
   disabledButton: {
-    backgroundColor: '#bdc3c7',
-    opacity: 0.6,
+    backgroundColor: "#bdc3c7",
+    opacity: 0.6
   },
   pressedButton: {
     opacity: 0.8,
-    transform: [{ scale: 0.98 }],
+    transform: [{ scale: 0.98 }]
   },
   backButtonText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: "600"
   },
   submitButtonText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 16,
-    fontWeight: 'bold',
-  },
+    fontWeight: "bold"
+  }
 });
 
 export default SetupScreen;

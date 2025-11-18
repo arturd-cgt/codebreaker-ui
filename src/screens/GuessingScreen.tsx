@@ -21,13 +21,13 @@ const GuessingScreen: React.FC<GuessingScreenProps> = ({
   guesses,
   maxAttempts,
   onSubmitGuess,
-  isLoading = false,
+  isLoading = false
 }) => {
   const [currentGuess, setCurrentGuess] = React.useState<(number | null)[]>([
     null,
     null,
     null,
-    null,
+    null
   ]);
 
   const attemptsLeft = maxAttempts - guesses.length;
@@ -53,14 +53,14 @@ const GuessingScreen: React.FC<GuessingScreenProps> = ({
             style={({ pressed }) => [
               styles.submitButton,
               isDisabled && styles.disabledButton,
-              pressed && !isDisabled && styles.pressedButton,
+              pressed && !isDisabled && styles.pressedButton
             ]}
             onPress={handleSubmit}
             disabled={isDisabled}
             role="button"
           >
             <Text style={styles.buttonText}>
-              {isLoading ? 'Submitting...' : 'Submit Guess'}
+              {isLoading ? "Submitting..." : "Submit Guess"}
             </Text>
           </Pressable>
         </View>
@@ -73,44 +73,44 @@ const GuessingScreen: React.FC<GuessingScreenProps> = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f7f9fc",
+    backgroundColor: "#f7f9fc"
   },
   historyContainer: {
-    flex: 1,
+    flex: 1
   },
   bottomContainer: {
     paddingVertical: 20,
     paddingHorizontal: 20,
-    backgroundColor: "#f7f9fc",
+    backgroundColor: "#f7f9fc"
   },
   inputContainer: {
-    alignItems: "center",
+    alignItems: "center"
   },
   attemptsText: {
     textAlign: "center",
     fontSize: 20,
     fontWeight: "bold",
     color: "#555",
-    paddingTop: 15,
+    paddingTop: 15
   },
   submitButton: {
     marginTop: 20,
     backgroundColor: "#3498db",
     paddingVertical: 12,
     paddingHorizontal: 30,
-    borderRadius: 25,
+    borderRadius: 25
   },
   disabledButton: {
-    backgroundColor: "#bdc3c7",
+    backgroundColor: "#bdc3c7"
   },
   pressedButton: {
-    backgroundColor: "#2980b9",
+    backgroundColor: "#2980b9"
   },
   buttonText: {
     color: "#fff",
     fontSize: 18,
-    fontWeight: "bold",
-  },
+    fontWeight: "bold"
+  }
 });
 
 export default GuessingScreen;
